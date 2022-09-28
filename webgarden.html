@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ウェブ箱庭</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Kiwi+Maru:wght@400;500&family=M+PLUS+1p:wght@700&family=M+PLUS+Rounded+1c:wght@100;300&family=Mukta:wght@600&family=PT+Sans&family=Poppins:wght@200;300&family=Prompt:wght@100;600;700;800&family=RocknRoll+One&family=Sawarabi+Gothic&family=Shippori+Mincho:wght@600&family=Signika:wght@500;600&family=Tinos:wght@700&family=Zen+Kaku+Gothic+Antique:wght@500;700;900&family=Zen+Maru+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      :root {
+        --primary: #ffcf31;
+      }
+
+      * {
+        font-family: "Dosis", sans-serif;
+        font-family: "Kiwi Maru", serif;
+        font-family: "M PLUS 1p", sans-serif;
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        font-family: "Mukta", sans-serif;
+        font-family: "Poppins", sans-serif;
+        font-family: "Prompt", sans-serif;
+        font-family: "PT Sans", sans-serif;
+        font-family: "RocknRoll One", sans-serif;
+        font-family: "Sawarabi Gothic", sans-serif;
+        font-family: "Shippori Mincho", serif;
+        font-family: "Signika", sans-serif;
+        font-family: "Tinos", serif;
+        font-family: "Zen Kaku Gothic Antique", sans-serif;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        background-color: rgb(49, 49, 49);
+        color: white;
+      }
+
+      .bs-primary {
+        background-color: var(--primary);
+      }
+
+      .text-pri {
+        color: var(--primary);
+      }
+
+      .bg-g {
+        background: rgb(252, 252, 252);
+        background: linear-gradient(
+          180deg,
+          rgba(252, 252, 252, 1) 15%,
+          rgba(0, 0, 0, 1) 100%
+        );
+        background-blend-mode: overlay;
+      }
+
+      .ttl-font {
+        font-family: "Bahnschrift";
+      }
+
+      .zindex {
+        z-index: -1;
+      }
+
+      /* Nav */
+
+      nav ul {
+        gap: 3%;
+      }
+
+      nav ul li {
+        font-weight: 800;
+        font-size: larger;
+        text-align: center;
+      }
+
+      nav ul a::after {
+        content: " ";
+        display: block;
+        width: 0%;
+        height: 2px;
+        background-color: rgb(255, 255, 255);
+        transition: 0.4s 0.2s;
+      }
+
+      nav ul a:hover::after {
+        width: 100%;
+      }
+
+      #mobileNav {
+        opacity: 0.95;
+      }
+
+      .casinoLogo {
+        max-width: 600px;
+      }
+
+      .headerSlide {
+        height: 100vh;
+        background-image: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+      }
+
+      /* イベント紹介 */
+
+      .eventWrap {
+        background-image: url("./image/event-bg.png");
+        background-size: cover;
+      }
+
+      .casinobox {
+        border: 3px solid #c9c162;
+        border-radius: 1.2rem;
+        font-size: 2rem;
+      }
+
+      .casinobox span {
+        font-size: 3.8rem;
+      }
+
+      /* 配信者 */
+
+      .logo img {
+        max-height: 65px;
+        margin-left: 1rem;
+      }
+
+      .creatorlistBtn {
+        text-decoration: none;
+        background-color: var(--primary);
+        padding: 1.3rem 5rem;
+        border-radius: 3rem;
+        color: black;
+        font-weight: 600;
+      }
+
+      .creatorlistBtn:hover {
+        background-color: black;
+        color: white;
+      }
+      /* footer */
+
+      #gottop {
+        position: fixed;
+        bottom: 2.5%;
+        right: 1.5%;
+        border-radius: 50%;
+        width: 2.8rem;
+        height: 2.8rem;
+      }
+      #gottop:hover {
+        transform: scale(1.1);
+      }
+
+      @media screen and (max-width: 767px) {
+        .subtitle {
+          width: 80%;
+        }
+
+        .boxwrap {
+          transform: scale(0.95);
+        }
+
+        .cross img {
+          width: 10%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- bootstrap js cdn -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var triggerTabList = [].slice.call(
+        document.querySelectorAll("#myTab button")
+      );
+      triggerTabList.forEach(function (triggerEl) {
+        var tabTrigger = new bootstrap.Tab(triggerEl);
+
+        triggerEl.addEventListener("click", function (event) {
+          event.preventDefault();
+          tabTrigger.show();
+        });
+      });
+    </script>
+    <nav
+      class="fixed-top w-100 text-uppercase py-2 px-3 px-md-4 d-flex justify-content-between align-items-center justify-content-md-around"
+    >
+      <a href="#" class="text-decoration-none logo"
+        ><img
+          src="./image/Low Resolution Logo - Transparent Background.png"
+          alt=""
+      /></a>
+      <ul
+        class="h-100 w-100 d-none d-md-flex justify-content-end align-items-center list-unstyled my-2"
+      >
+        <a href="#story" class="text-decoration-none text-light">
+          <li>ストーリー紹介</li>
+        </a>
+        <a href="#character" class="text-decoration-none text-light">
+          <li>キャラクター紹介</li>
+        </a>
+        <a href="#" target="_blank" class="text-decoration-none text-light">
+          <li>公式サイト</li>
+        </a>
+      </ul>
+      <div id="menu" class="d-inline-block d-md-none">
+        <img src="./image/menuicon.png" alt="" width="45" />
+      </div>
+    </nav>
+    <!-- モバイル版 nav -->
+    <div id="mobileNav" class="fixed-top bg-dark w-100 h-75 fw-bold">
+      <div
+        id="closeBtn"
+        class="position-absolute end-0 px-3 py-3 d-inline-block"
+      >
+        <span class="fs-1 fw-bold">╳</span>
+      </div>
+      <ul
+        class="h-100 w-100 fs-5 d-flex flex-column justify-content-around align-items-center list-unstyled mb-0"
+      >
+        <a href="#story" class="text-decoration-none text-light">
+          <li>ストーリー紹介</li>
+        </a>
+        <a
+          href="#character"
+          rel="noopener noreferrer"
+          class="text-decoration-none text-light"
+          ><li>キャラクター紹介</li></a
+        >
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-decoration-none text-light"
+          ><li>公式サイト</li></a
+        >
+      </ul>
+    </div>
+    <header class="headerSlide position-relative">
+      <div class="container text-center">
+        <!-- <a
+          class="btn btn-outline-light border rounded-3 position-absolute top-50 start-50 translate-middle"
+          href="http://"
+          target="_blank"
+          rel="noopener noreferrer"
+          >詳しくはこちら</a
+        > -->
+      </div>
+    </header>
+    <main>
+      <!-- ストーリー紹介 -->
+      <div
+        id="story"
+        class="eventIntro d-flex flex-column justify-content-center align-items-center container mt-3 mb-5"
+      >
+        <h1 class="mb-0 py-5 fs-4 fw-bold text-center lh-base">
+          <span class="ttl-font fw-bold fs-1">The Tower</span
+          ><br />ようこそ高塔へ
+        </h1>
+        <div
+          class="eventCopy d-flex flex-column justify-content-center align-items-center my-5 container"
+        >
+          <p class="lh-lg text-center">
+            高塔聳立數百年。
+          </p>
+          <p class="lh-lg text-center">
+            総勢<span class="fw-bold"> 14 </span>人の配信者が<span
+              class="fw-bold"
+            >
+              7 対 7 </span
+            >でチームに分かれ、所属してるサイトを代表して対戦！
+          </p>
+          <p class="lh-lg text-center">
+            制限時間1時間と決められた時間内に配信者の方々はプライドをかけて熱い戦いに挑みます。
+          </p>
+        </div>
+      </div>
+      <!-- 世界観紹介 -->
+      <div class="eventWrap bg-danger p-5">
+        <div class="text-center container">
+          <p class="fs-2 fw-bold text-light">
+            全会員<span class="ttl-font">100%</span>ボーナス
+          </p>
+          <div class="content position-relative">
+            <div
+              class="subtitle fw-bolder bg-dark d-inline-block p-1 px-md-3 py-sm-2 rounded-pill text-pri position-absolute top-0 translate-middle"
+            >
+              センチネルとガイドとは？
+            </div>
+
+            <div class="bg-light p-5 rounded-3">
+              <p class="fw-bolder">
+                全会員対象入金100%ボーナス最大$50賭け条件1倍。<br />宇宙人が地球に来て初めてこの100％ボナースを得たら、きっと地球の100％ボナースはレベル高いな、と思うだろう。<br />それがローリングチップ。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center container">
+          <p class="fs-2 fw-bold text-light pt-3">優勝予想プレゼン</p>
+          <div class="content position-relative">
+            <div
+              class="subtitle fw-bolder bg-dark d-inline-block p-1 px-md-3 py-sm-2 rounded-pill text-pri position-absolute top-0 translate-middle"
+            >
+              スピリットアニマルとは？
+            </div>
+            <div class="bg-light p-5 rounded-3">
+              <p class="fw-bolder">
+                全会員対象入金100%ボーナス最大$50賭け条件1倍,サブイベント長ヨユマ支8展ざろき情至ぶゃた山図変選ばきイだ県了ゃ提行おルじ定19康け視情フタレエ文憂昌詩飼けはねど。ぶ選及コ経覧グーリンダイのポンポコピーのポンポコナーの
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- キャラクター紹介 -->
+      <div id="character" class="my-5 container">
+        <div class="row gx-0 gx-md-5">
+          <!-- 佐倉杏子 -->
+          <div
+            class="col-md-6 d-flex flex-column justify-content-center align-items-center"
+          >
+            <img
+              src="https://tw.portal-pokemon.com/play/resources/pokedex/img/pm/f82fd557ce114e76004cbf6114660cb5908222c7.png"
+              alt=""
+            />
+            <p class="fs-2 mt-4 fw-bold">佐倉杏子</p>
+            <article class="container">
+              <p class="fs-4 my-4 fw-bold">詳細内容</p>
+              <p class="text-start lh-lg">
+                対象期間中、全会員様を対象として、エルドアへ入金すれば、賭け条件1倍となる100％入金ボーナスを進呈！<br />
+                ※最大額は5,000円となります。
+              </p>
+              <p class="fs-4 my-4 fw-bold">参加方法</p>
+              <p class="mb-1 text-start lh-base">
+                【入金する】ページで、ご利用の入金方法を選び、「入金ボーナス」の欄に「●●100％ボーナス」を選択してください。
+              </p>
+              <p class="mb-1 ext-start lh-base">
+                ※ボーナスをご選択されずにご入金された場合、ボーナスは付与されません。
+              </p>
+              <p class="mb-1 ext-start lh-base">
+                ※ビットコイン、ecoPayz、Sticpay、銀行振込、クレジットカード利用可能。
+              </p>
+              <p class="mb-1 ext-start lh-base">
+                ※「スポーツベット」へのご入金は対象外となります。
+              </p>
+            </article>
+          </div>
+          <!-- 美樹さやか -->
+          <div
+            class="col-md-6 d-flex flex-column justify-content-center align-items-center"
+          >
+            <img
+              src="https://tw.portal-pokemon.com/play/resources/pokedex/img/pm/317110bc394b29a1b4e783f000a3150ca54af50d.png"
+              alt=""
+            />
+            <p class="fs-2 mt-4 fw-bold">美樹さやか</p>
+            <article class="container">
+              <p class="fs-4 my-4 fw-bold">詳細内容</p>
+              <p class="text-start lh-lg">
+                対象期間中、全会員様を対象として、エルドアへ入金すれば、賭け条件1倍となる100％入金ボーナスを進呈！<br />
+                ※最大額は5,000円となります。
+              </p>
+              <p class="fs-4 my-4 fw-bold">参加方法</p>
+              <p class="mb-1 text-start lh-base">
+                【入金する】ページで、ご利用の入金方法を選び、「入金ボーナス」の欄に「●●100％ボーナス」を選択してください。
+              </p>
+              <p class="mb-1 text-start lh-base">
+                ※ボーナスをご選択されずにご入金された場合、ボーナスは付与されません。
+              </p>
+              <p class="mb-1 text-start lh-base">
+                ※ビットコイン、ecoPayz、Sticpay、銀行振込、クレジットカード利用可能。
+              </p>
+              <p class="mb-1 text-start lh-base">
+                ※「スポーツベット」へのご入金は対象外となります。
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="copyright w-100 m-0 mt-5 p-0 ttl-font">
+        <p class="bs-primary text-dark mb-0 py-3 text-center fw-bolder">
+          ELDOAH×WONDER Copyright © 2022
+        </p>
+        <a
+          data-aos="fade-zoom-in"
+          href="#"
+          id="gottop"
+          class="aos-init aos-animate"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3236/3236954.png"
+            alt=""
+          />
+        </a>
+      </div>
+    </footer>
+    <!-- bootstrap js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
+      integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+      integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+      crossorigin="anonymous"
+    ></script>
+    <!-- AOS -->
+    <script>
+      AOS.init();
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#mobileNav").hide();
+      });
+      $("#menu").on("click", function () {
+        $("#mobileNav").slideDown();
+      });
+      $("#closeBtn").on("click", function () {
+        $("#mobileNav").hide();
+      });
+    </script>
+  </body>
+</html>
