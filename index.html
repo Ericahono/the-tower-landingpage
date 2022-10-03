@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>高塔 | 魔法少女小圓哨嚮AU</title>
-    <link rel="icon" href="https://alowko.files.wordpress.com/2022/05/tower_logo.png">
+    <link
+      rel="icon"
+      href="https://alowko.files.wordpress.com/2022/05/tower_logo.png"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -57,10 +60,6 @@
         background-color: var(--primary);
       }
 
-      .text-pri {
-        color: var(--primary);
-      }
-
       .bg-g {
         background: rgb(252, 252, 252);
         background: linear-gradient(
@@ -75,8 +74,28 @@
         font-family: "Bahnschrift";
       }
 
+      .text-pri{
+        color: var(--primary);
+      }
+
       .zindex {
         z-index: -1;
+      }
+
+      .pagebtn {
+        text-decoration: none;
+        padding: 1rem 4.5rem;
+        border-radius: 3rem;
+        background-color: var(--primary);
+        border: 2px solid black;
+        color: black;
+      }
+
+      .pagebtn:hover {
+        transition: 0.35s;
+        background-color: black;
+        color: var(--primary);
+        font-weight: 600;
       }
 
       /* Nav */
@@ -108,54 +127,17 @@
         opacity: 0.95;
       }
 
-      .casinoLogo {
-        max-width: 600px;
-      }
-
       .headerSlide {
         height: 100vh;
         background-image: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
         background-size: cover;
       }
 
-      /* イベント紹介 */
-
-      .eventWrap {
-        background-image: url("./image/event-bg.png");
-        background-size: cover;
-      }
-
-      .casinobox {
-        border: 3px solid #c9c162;
-        border-radius: 1.2rem;
-        font-size: 2rem;
-      }
-
-      .casinobox span {
-        font-size: 3.8rem;
-      }
-
-      /* 配信者 */
-
       .logo img {
         max-height: 65px;
         margin-left: 1rem;
       }
 
-      .pagebtn {
-        text-decoration: none;
-        padding: 1rem 5rem;
-        border-radius: 3rem;
-        background-color: black;
-        color:var(--primary);
-        font-weight: 600;
-      }
-
-      .pagebtn:hover {
-        background-color: var(--primary);
-        border: 2px solid black;
-        color: black;
-      }
       /* footer */
 
       #gottop {
@@ -179,8 +161,8 @@
           transform: scale(0.95);
         }
 
-        .cross img {
-          width: 10%;
+        .logo img {
+          width: 50px;
         }
       }
     </style>
@@ -192,21 +174,8 @@
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
-    <script>
-      var triggerTabList = [].slice.call(
-        document.querySelectorAll("#myTab button")
-      );
-      triggerTabList.forEach(function (triggerEl) {
-        var tabTrigger = new bootstrap.Tab(triggerEl);
-
-        triggerEl.addEventListener("click", function (event) {
-          event.preventDefault();
-          tabTrigger.show();
-        });
-      });
-    </script>
     <nav
-      class="fixed-top w-100 text-uppercase py-2 px-3 px-md-4 d-flex justify-content-between align-items-center justify-content-md-around"
+      class="fixed-top w-100 text-uppercase py-2 px-md-3 px-md-4 d-flex justify-content-between align-items-center justify-content-md-around"
     >
       <a href="#" class="text-decoration-none logo"
         ><img
@@ -222,7 +191,11 @@
         <a href="#character" class="text-decoration-none text-light">
           <li>Character</li>
         </a>
-        <a href="https://alowko.wordpress.com/" target="_blank" class="text-decoration-none text-light">
+        <a
+          href="https://alowko.wordpress.com/"
+          target="_blank"
+          class="text-decoration-none text-light"
+        >
           <li>→Tower</li>
         </a>
       </ul>
@@ -277,8 +250,7 @@
         class="d-flex flex-column justify-content-center align-items-center container mt-3 mb-5"
       >
         <h1 class="mb-0 py-5 fs-4 fw-bold text-center lh-base">
-          <span class="ttl-font fw-bold fs-1">Introduction</span
-          >
+          <span class="ttl-font fw-bold fs-1">Introduction</span>
         </h1>
         <section
           class="d-flex flex-column justify-content-center align-items-center my-5 container"
@@ -331,7 +303,8 @@
             href="https://alowko.wordpress.com/2020/10/12/%e9%ab%98%e5%a1%94%e8%a8%ad%e5%ae%9a%e9%9b%86/"
             target="_blank"
             rel="noopener noreferrer"
-          >點我看更多</a>
+            >點我看更多</a
+          >
         </div>
       </div>
       <!-- キャラクター紹介 -->
@@ -347,16 +320,16 @@
               alt=""
             />
             <p class="fs-2 mt-4 fw-bold">佐倉杏子</p>
-            <article class="container">
-              <p class="text-start lh-lg">
+            <article class="container text-center text-md-start">
+              <p class="lh-lg">
                 出身自風見野，隸屬於見瀧原塔的次席哨兵，並擔任首席哨兵巴麻美的直屬副官。
               </p>
               <p class="fs-4 my-4 fw-bold">基本檔案</p>
-              <p class="mb-1 text-start lh-base">軍階：次席</p>
-              <p class="mb-1 text-start lh-base">評等：Ａ級哨兵</p>
-              <p class="mb-1 text-start lh-base">隸屬：見瀧原塔</p>
-              <p class="mb-1 text-start lh-base">精神嚮導：獨角獸</p>
-              <p class="mb-1 ext-start lh-base">信息素種類：蘋果</p>
+              <p class="mb-1 lh-base">軍階：次席</p>
+              <p class="mb-1 lh-base">評等：Ａ級哨兵</p>
+              <p class="mb-1 lh-base">隸屬：見瀧原塔</p>
+              <p class="mb-1 lh-base">精神嚮導：獨角獸</p>
+              <p class="mb-1 lh-base">信息素種類：蘋果</p>
             </article>
           </div>
           <!-- 美樹さやか -->
@@ -368,16 +341,16 @@
               alt=""
             />
             <p class="fs-2 mt-4 fw-bold">美樹さやか</p>
-            <article class="container">
-              <p class="text-start lh-lg">
+            <article class="container text-center text-md-start">
+              <p class="lh-lg">
                 出身自見瀧原下瀧區，隸屬於見瀧原塔的駐塔醫務官。
               </p>
               <p class="fs-4 my-4 fw-bold">基本檔案</p>
-              <p class="mb-1 text-start lh-base">軍階：駐塔醫務官</p>
-              <p class="mb-1 text-start lh-base">評等：Ａ級嚮導</p>
-              <p class="mb-1 text-start lh-base">隸屬：見瀧原塔</p>
-              <p class="mb-1 text-start lh-base">精神嚮導：海豚</p>
-              <p class="mb-1 text-start lh-base">信息素種類：樹莓</p>
+              <p class="mb-1 lh-base">軍階：駐塔醫務官</p>
+              <p class="mb-1 lh-base">評等：Ａ級嚮導</p>
+              <p class="mb-1 lh-base">隸屬：見瀧原塔</p>
+              <p class="mb-1 lh-base">精神嚮導：海豚</p>
+              <p class="mb-1 lh-base">信息素種類：樹莓</p>
             </article>
           </div>
         </div>
